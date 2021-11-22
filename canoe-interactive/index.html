@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			.annotation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    margin-left: 15px;
+    margin-top: 15px;
+    padding: 1em;
+    width: 200px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: .5em;
+    font-size: 12px;
+    line-height: 1.2;
+    transition: opacity .5s;
+			}
+
+
+#number {
+    position: absolute;
+    z-index: -1;
+}
+.interactive-text{
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	width: 20vw;
+	background-color: #090226;
+	z-index: 1000;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	color: white;
+}
+		</style>
+		<script type="text/javascript" src="./dat.gui-master/build/dat.gui.min.js"></script>
+	</head>
+	<body>
+		<nav class="interactive-text">
+
+
+		</nav>
+		<canvas id="number" width="64" height="64"></canvas>
+		<script type="module">
+			
+			let annotation_data = [
+			{
+				label: 1,
+				english: "Stern",
+				anishinaabe: "Ishkweyaang-jiimaan",
+				translation: "The Past",
+				sound: "./audio/2.mp3",
+				x: 0.15, 
+				y: 0.8, 
+				z: -2.02
+			},
+			{
+				label: 2,
+				english: "Bow",
+				anishinaabe: "Niigaah-jiimaan",
+				translation: "The Future",
+				sound: "./audio/3.mp3",
+				x: 0.15, 
+				y: 0.8, 
+				z: -3.02
+			}
+		]
+
+			const gui = new dat.GUI();
+			// Our Javascript will go here.
+			import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js";
+			import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js";
+			import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js";
+			const scene = new THREE.Scene();
+			
+			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+			const renderer = new THREE.WebGLRenderer();
+			renderer.setPixelRatio(window.devicePixelRatio);
+   			renderer.setSize(window.innerWidth, window.innerHeight);
+  			// renderer.setClearColor(0x333333, 1);
+			renderer.domElement.classList.add('three-renderer')
+    		document.body.appendChild(renderer.domElement);
+			const controls = new OrbitControls( camera, renderer.domElement );
+			camera.position.z = 5;
+			gui.add(camera.position, 'x', -10, 10, 0.1)
+			
+			const light = new THREE.AmbientLight( 0x404040 ); // soft white light
+			light.intensity = 5
+			scene.add( light );
+			const loader = new GLTFLoader();
+			let mesh = new THREE.Object3D()
+			loader.load( './testscene.glb', function ( gltf ) {
+				mesh = gltf.scene
+				scene.add(mesh);
+				}, undefined, function ( error ) {
+
+			console.error( error );
+
+			} );
+			const numberTexture = new THREE.CanvasTexture(
+    document.querySelector('#number')
+);
+const spriteMaterial = new THREE.SpriteMaterial({
+    map: numberTexture,
+    alphaTest: 0.5,
+    transparent: true,
+    depthTest: false,
+    depthWrite: false
+});
+			const canvas = document.getElementById('number');
+			const ctx = canvas.getContext('2d');
+			const x = 32;
+			const y = 32;
+			const radius = 30;
+			const startAngle = 0;
+			const endAngle = Math.PI * 2;
+			ctx.fillStyle = 'rgb(0, 0, 0)';
+			ctx.beginPath();
+			ctx.arc(x, y, radius, startAngle, endAngle);
+			ctx.fill();
+
+			ctx.strokeStyle = 'rgb(255, 255, 255)';
+			ctx.lineWidth = 3;
+			ctx.beginPath();
+			ctx.arc(x, y, radius, startAngle, endAngle);
+			ctx.stroke();
+
+			ctx.font = '32px sans-serif';
+			ctx.textAlign = 'center';
+			ctx.textBaseline = 'middle';
+	const generateAnnotations = (data, active_mesh, active_scene) => {
+			
+			data.map(item => {
+			
+				ctx.fillStyle = 'rgb(255, 255, 255)';
+				ctx.fillText(item.label, x, y);
+			let sprite = new THREE.Sprite(spriteMaterial);
+			sprite.position.set(item.x, item.y, item.z);
+			sprite.scale.set(.125, .125, .125);
+			active_scene.add(sprite);
+
+			})
+
+		}
+
+		document.onkeypress = function(){
+			console.log("Scene polycount:", renderer.info.render.triangles)
+			console.log("Active Drawcalls:", renderer.info.render.calls)
+			console.log("Textures in Memory", renderer.info.memory.textures)
+			console.log("Geometries in Memory", renderer.info.memory.geometries)
+		}
+		annotation_data.map(anno => {
+			let newItem = document.createElement('li')
+			newItem.onmouseover = function(){
+				controls.target = new THREE.Vector3(anno.x, anno.y, anno.z)
+			}
+			newItem.innerHTML = anno.anishinaabe + ' (' + anno.english +')'
+			document.querySelector('.interactive-text').appendChild(newItem)
+		})
+		function render() {
+    renderer.render(scene, camera);
+	generateAnnotations(annotation_data, mesh, scene)
+	
+}
+
+		function animate() {
+
+    requestAnimationFrame(animate);
+    controls.update();
+    render();
+}
+render()
+animate()
+		</script>
+	</body>
+</html>
