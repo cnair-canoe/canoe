@@ -34,6 +34,17 @@ display: none;
 	color: white !important;
 	text-shadow: unset !important;
 }
+.loading-text{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	color: white;
+	user-select: none;
+	transition: opacity 1s ease-in-out;
+}
+.loading-hidden{
+	opacity: 0;
+}
 		</style>
 		<link rel="stylesheet" href="../style.css">
 		<script>/** vim: et:ts=4:sw=4:sts=4
@@ -78,6 +89,7 @@ display: none;
 		</div>
 
 		<p style="color: white; position: absolute; right: 5%; bottom: 2%;">3D modeling and web development by David Deloso</p>
+		<h1 class="loading-text">Loading...</h1>
 		<canvas id="number" width="64" height="64"></canvas>
 		<script type="module" src="https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js"></script>
 		<script type="module" src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js"></script>
@@ -137,6 +149,7 @@ scene.add(light);
 const loader = new _GLTFLoader.GLTFLoader();
 let mesh = new THREE.Object3D();
 loader.load('./testscene.glb', function (gltf) {
+  document.querySelector('.loading-text').classList.add('loading-hidden')
   mesh = gltf.scene;
   scene.add(mesh);
 }, undefined, function (error) {
