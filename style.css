@@ -242,6 +242,9 @@ li{
     width: 100%;
     height: 100%;
   }
+  .article-thumb-mobile{
+      display: none;
+  }
 @media screen and (max-width: 1000px) {
     body{
         overflow-x: hidden;
@@ -249,5 +252,54 @@ li{
     .site-nav-menu{
         display: none;
     }
-    
+    .site-title{
+        width: 70vw;
+
+    }
+    .site-title h1{
+        font-size: 2rem;
+        
+    }
+    .site-title h2{
+        font-size: 1rem;
+    }
+    .site-body{
+        width: 90vw;
+    }
+    .article-list-item{
+        box-sizing: border-box;
+        background-image: unset !important;
+        color: black !important;
+        background-color: unset !important;
+        box-shadow: unset !important;
+        text-shadow: none;
+    }
+    .article-list-item h2{
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+    .article-list-item h3{
+        font-weight: 400;
+    }
+    .article-list-item *{
+        text-shadow: none;
+
+    }
+    .article-list-item a{
+        color: black;
+    }
+    article{
+        width: 90vw;
+        padding: 0 0 2rem 0;
+    }
+.homepage-content-section h1{
+    margin-bottom: 1rem;
+}
+.site-hero{
+    background-position: center;
+}
+.article-thumb-mobile{
+    display: block;
+    width: 100%;
+}
 }
