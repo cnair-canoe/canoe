@@ -34,7 +34,7 @@ display: none;
 	color: white !important;
 	text-shadow: unset !important;
 }
-.loading-text, .error-message{
+.loading-text, .error-text{
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -44,6 +44,9 @@ display: none;
 }
 .loading-hidden{
 	opacity: 0;
+}
+.error-text{
+	display: none;
 }
 
 		</style>
@@ -91,6 +94,10 @@ display: none;
 
 		<p style="color: white; position: absolute; right: 5%; bottom: 2%;">3D modeling and web development by David Deloso</p>
 		<h1 class="loading-text">Loading...</h1>
+		<div class="error-text">
+			<h1>Browser Unsupported.</h1>
+			<p><a style="color: white;" href="../index">Back home</a></p>
+
 		
 		
 		<script type="module">
@@ -154,6 +161,7 @@ loader.load('./testscene.glb', function (gltf) {
 }, undefined, function (error) {
   renderer.dispose()
   renderer.forceContextLoss();
+  document.querySelector('.loading-text').innerHTML = "Browser unsupported."
 });
 window.addEventListener('resize', onWindowResize, false);
 
