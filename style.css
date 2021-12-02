@@ -6,7 +6,7 @@ h1,h2,h3,h4, .site-nav-menu{
     font-family: var(--theme-main-font);
 
 }
-p{
+p, li{
     font-family: var(--theme-body-font);
 }
 .site-nav-main{
@@ -68,8 +68,11 @@ p{
     width: 70%;
     margin: auto;
     position: relative;
-    top: 100vh;
     padding: 2rem 0;
+}
+.homepage-body{
+    top: 100vh;
+
 }
 article{
     width: 70%;
@@ -93,6 +96,9 @@ article h1{
     font-size: 2rem;
 }
 .site-body p{
+    font-size: 1rem;
+}
+li{
     font-size: 1.25rem;
 }
 .site-intro h2{
@@ -149,4 +155,55 @@ article h1{
 .article-list-item a{
     color: white;
     text-decoration: none;
+}
+
+.about-bios{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.about-team{
+    width: 40%;
+    margin: 0 5%;
+    text-align: center;
+}
+.about-team li:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.about-team ul{
+    padding: 0;
+    list-style-type: none;
+}
+.popup-background{
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    display: none;
+}
+.popup-window{
+   background-color: white;
+   border: 3px solid lightgreen;
+   position: absolute;
+   left: 25%;
+   right: 25%;
+   top: 25%;
+   /* bottom: 25%; */
+}
+.popup-display{
+    display: block;
+}
+.popup-close{
+    width: 4rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+}
+.popup-inner{
+    padding: 5% 25%;
 }
