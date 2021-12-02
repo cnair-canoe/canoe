@@ -9,6 +9,12 @@ h1,h2,h3,h4, .site-nav-menu{
 p, li{
     font-family: var(--theme-body-font);
 }
+html{
+    scroll-behavior: smooth;
+}
+area{
+    cursor: pointer;
+}
 .site-nav-main{
     z-index: 10000;
     position: fixed;
@@ -194,6 +200,14 @@ li{
    top: 25%;
    /* bottom: 25%; */
 }
+.popup-tooltip{
+    background-color: white;
+    border: 3px solid lightgreen;
+    position: absolute;
+    z-index: 1000000;
+    width: fit-content;
+    height: fit-content;
+}
 .popup-display{
     display: block;
 }
@@ -206,4 +220,16 @@ li{
 }
 .popup-inner{
     padding: 5% 25%;
+}
+.popup-hidden{
+    display: none;
+}
+@media screen and (max-width: 1000px) {
+    body{
+        overflow-x: hidden;
+    }
+    .site-nav-menu{
+        display: none;
+    }
+    
 }
