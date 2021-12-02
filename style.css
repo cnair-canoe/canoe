@@ -6,6 +6,9 @@ h1,h2,h3,h4, .site-nav-menu{
     font-family: var(--theme-main-font);
 
 }
+.disable-scroll{
+    overflow: hidden;
+}
 p, li{
     font-family: var(--theme-body-font);
 }
@@ -37,7 +40,7 @@ area{
 .site-nav-menu svg{
     transform: scale(0.8);
 }
-.site-nav-menu a{
+.site-nav-menu a, .site-nav-menu-mobile a{
     color: black;
     text-shadow: 1px 1px 3px white;
     font-size: 1.5rem;
@@ -245,12 +248,63 @@ li{
   .article-thumb-mobile{
       display: none;
   }
+  .patty-image{
+    width: 50%; 
+    margin: 0 25%;
+  }
+  .site-nav-mobile{
+      display: none;
+  }
+  .mobile-hamburger{
+      display: none;
+  }
 @media screen and (max-width: 1000px) {
     body{
         overflow-x: hidden;
     }
     .site-nav-menu{
         display: none;
+    }
+    .mobile-icon-display{
+        display: block;
+    }
+    .mobile-hamburger, .mobile-close{
+        
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        width: 4rem;
+        z-index: 100000;
+    }
+    .site-nav-mobile{
+        background-color: rgba(255, 255, 255, 0.8);
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10000;
+    }
+    .site-nav-menu-mobile{
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        list-style-type: none;
+        padding: 0;
+    }
+    .site-nav-menu-mobile a{
+        font-size: 2rem;
+    }
+    .site-nav-menu-mobile svg{
+        width: 4rem;
+    }
+    .site-nav-mobile-show{
+        display: block;
     }
     .site-title{
         width: 70vw;
@@ -302,4 +356,18 @@ li{
     display: block;
     width: 100%;
 }
+.about-team{
+    width: 100%;
+}
+.popup-window{
+    left: 12.5%;
+    right: 12.5%;
+    top: 12.5%;
+    bottom: 12.5%;
+    overflow: scroll;
+}
+    .patty-image{
+        width: 100%; 
+        margin: 0;
+      }
 }
