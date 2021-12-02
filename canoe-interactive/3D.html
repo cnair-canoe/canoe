@@ -34,19 +34,16 @@ display: none;
 	color: white !important;
 	text-shadow: unset !important;
 }
-.loading-text, .error-text{
-	position: absolute;
-	left: 50%;
-	top: 50%;
+.loading-text{
+	position: relative;
+	top: 50vh;
+	text-align: center;
 	color: white;
 	user-select: none;
 	transition: opacity 1s ease-in-out;
 }
 .loading-hidden{
 	opacity: 0;
-}
-.error-text{
-	display: none;
 }
 
 		</style>
@@ -94,9 +91,7 @@ display: none;
 
 		<p style="color: white; position: absolute; right: 5%; bottom: 2%;">3D modeling and web development by David Deloso</p>
 		<div class="loading-text"><h1>Loading...</h1></div>
-		<div class="error-text">
-			<h1>Browser Unsupported.</h1>
-			<p><a style="color: white;" href="../index">Back home</a></p>
+		</body>
 
 		
 		
@@ -171,7 +166,7 @@ render();
 animate();
 }
 else{
-	document.querySelector('.loading-text').innerHTML = `<h1>Browser unsupported</h1> <a href="../index.html" style="color: white"><p>Back to home</p></a>
+	document.querySelector('.loading-text').innerHTML = `<h1>Browser unsupported</h1> <a href="../index.html" style="color: white"><p>Back to home</p></a>`
 }
 		
 		</script>
