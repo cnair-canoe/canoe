@@ -101,13 +101,18 @@ display: none;
 		
 		
 		<script type="module">
-		"use strict";
-//If this code is not in a define call,
-//DO NOT use require('foo'), but use the async
-//callback version:
+			function isMobile() {
+return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js'
 import * as _OrbitControls from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js'
 import * as _GLTFLoader from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js'
+if (!isMobile()) {
+	"use strict";
+//If this code is not in a define call,
+//DO NOT use require('foo'), but use the async
+//callback version:
+
 // var THREE = _interopRequireWildcard(require("https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js"));
 
 // var _GLTFLoader = require("https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js");
@@ -118,25 +123,6 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-let annotation_data = [{
-  label: 1,
-  english: "Stern",
-  anishinaabe: "Ishkweyaang-jiimaan",
-  translation: "The Past",
-  sound: "./audio/2.mp3",
-  x: 0.15,
-  y: 0.8,
-  z: -2.02
-}, {
-  label: 2,
-  english: "Bow",
-  anishinaabe: "Niigaah-jiimaan",
-  translation: "The Future",
-  sound: "./audio/3.mp3",
-  x: 0.15,
-  y: 0.8,
-  z: -3.02
-}]; // Our Javascript will go here.
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -183,6 +169,11 @@ function animate() {
 
 render();
 animate();
+}
+else{
+	document.querySelector('.loading-text').innerHTML = "Browser unsupported"
+}
+		
 		</script>
 	</body>
 </html>
