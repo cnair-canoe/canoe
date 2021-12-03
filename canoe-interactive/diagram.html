@@ -145,8 +145,8 @@ imageMapResize()
                 popup.classList.remove('popup-hidden')
             }
                 document.querySelector('.popup-text').innerHTML = area.alt
-                popup.style.left = (event.pageX + 1) + 'px'
-                popup.style.top = (event.pageY + 1) + 'px'
+                popup.style.left = event.pageX + 'px'
+                popup.style.top = event.pageY + 'px'
             }
         area.onmouseleave = function(event){
             popup.classList.add('popup-hidden')
