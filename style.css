@@ -197,6 +197,7 @@ li{
 .popup-window{
    background-color: white;
    border: 3px solid lightgreen;
+   box-shadow: 2px 2px 2px;
    position: absolute;
    left: 25%;
    right: 25%;
@@ -204,6 +205,7 @@ li{
    /* bottom: 25%; */
 }
 .popup-tooltip{
+    box-shadow: 2px 2px 2px;
     background-color: white;
     border: 3px solid lightgreen;
     position: absolute;
