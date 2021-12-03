@@ -372,4 +372,14 @@ li{
         width: 100%; 
         margin: 0;
       }
+      .diagram-popup{
+          display: block !important;
+          position: static;
+          margin: 3rem auto;
+          width: 90%;
+          text-align: center;
+      }
+      .diagram-figure{
+          margin: 0;
+      }
 }
