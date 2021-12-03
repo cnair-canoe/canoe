@@ -76,9 +76,7 @@
     </ul>
 
 </nav>
-    <div class="popup-tooltip popup-hidden">
-            <p class="popup-text"style="padding: 1rem;"></p>
-    </div>
+  
     <article>
         <div class="article-intro-content">
             <h1>"The Birchbark that Recieves as Kiss"</h1>
@@ -108,6 +106,9 @@
     <area data-audioid="15" alt="Apisidaaganan: sheathing" title="Apisidaaganan: sheathing" coords="1772,1060,1799,898,1558,860,1533,791,1390,594,1342,612,1473,732,1500,848,1478,898,1526,1028" shape="poly">
     <area data-audioid="16" alt="Waaganigaanan/waaganaag: ribs (inanimate vs. animate)" title="Waaganigaanan/waaganaag: ribs (inanimate vs. animate)" coords="1149,424,1772,397,1784,440,1646,463,1457,511,1136,622,1090,634" shape="poly">
 </map>
+<div class="popup-tooltip popup-hidden">
+    <p class="popup-text"style="padding: 1rem;"></p>
+</div>
     </article>
 
 <script>
@@ -144,8 +145,8 @@ imageMapResize()
                 popup.classList.remove('popup-hidden')
             }
                 document.querySelector('.popup-text').innerHTML = area.alt
-                popup.style.left = (event.pageX + 10) + 'px'
-                popup.style.top = (event.pageY + 10) + 'px'
+                popup.style.left = (event.pageX + 1) + 'px'
+                popup.style.top = (event.pageY + 1) + 'px'
             }
         area.onmouseleave = function(event){
             popup.classList.add('popup-hidden')
