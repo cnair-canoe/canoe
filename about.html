@@ -191,7 +191,7 @@
         bio: 'Maya Mojica is a senior studying Journalism, Creative Writing and Gender & Sexuality Studies at Northwestern University. Originally from a small town in Central Florida, Maya specializes in writing about gender, reproductive rights, and diversity and equity in the workplace. You can find Maya’s work in North by Northwestern, where she formerly served as Editor-in-Chief, Space Coast Living Magazine and Women’s Republic. In addition to a love of writing, Maya is an Irish dancer and an avid Cat Person™.  '
     },
     {   name: 'Yunkyo Moon-Kim',
-        bio: ''
+        bio: 'Yunkyo Moon-Kim is a senior studying journalism, creative writing and political science.'
 
     },
     {
@@ -271,7 +271,7 @@
         let selectedBio = bio_list.filter(i => person.innerHTML == i.name)
         person.onclick = function(){
             document.querySelector('.popup-heading').innerHTML = selectedBio[0].name
-            document.querySelector('.popup-text').innerHTML = selectedBio[0].bio ? selectedBio[0].bio : 'Bio coming soon!'
+            document.querySelector('.popup-text').innerHTML = selectedBio[0].bio
             popupDiv.classList.toggle('popup-display')
         }
     }
